@@ -15,20 +15,21 @@ const DIST_DIR = path.join(__dirname, "dist");
 
 // Create a new MCP server instance
 const server = new McpServer({
-  name: "Color Picker MCP App",
+  name: "Woody's Wild Guess - LIRR Estimator",
   version: "1.0.0",
 });
 
 // The ui:// scheme tells hosts this is an MCP App resource.
-const resourceUri = "ui://color-picker/mcp-app.html";
+const resourceUri = "ui://woodys-wild-guess/mcp-app.html";
 
-// Register the color picker tool with UI metadata
+// Register the LIRR estimator tool with UI metadata
 registerAppTool(
   server,
-  "color-picker",
+  "lirr-estimator",
   {
-    title: "Color Picker",
-    description: "Opens an interactive color picker interface to select colors in various formats (HEX, RGB, HSL).",
+    title: "Woody's Wild Guess - LIRR Estimator",
+    description:
+      "Opens Woody's Wild Guess, an interactive LIRR capital project estimator. Browse real MTA capital program projects, get cost estimates, and learn about Long Island Rail Road infrastructure investments. Optionally provide a project name or category to search.",
     inputSchema: {}, // Empty schema - no input parameters
     _meta: { ui: { resourceUri } },
   },
@@ -37,11 +38,11 @@ registerAppTool(
       content: [
         {
           type: "text",
-          text: "Color picker initialized",
+          text: "Woody's Wild Guess initialized. Browse LIRR capital projects and get Woody's estimates!",
         },
       ],
     };
-  },
+  }
 );
 
 // Register the resource that serves the bundled HTML
@@ -53,18 +54,18 @@ registerAppResource(
   async () => {
     const html = await fs.readFile(
       path.join(DIST_DIR, "mcp-app.html"),
-      "utf-8",
+      "utf-8"
     );
     return {
       contents: [
         { uri: resourceUri, mimeType: RESOURCE_MIME_TYPE, text: html },
       ],
     };
-  },
+  }
 );
 
 // Use stdio transport for Claude Desktop
 const transport = new StdioServerTransport();
 await server.connect(transport);
 
-console.error("Color Picker MCP Server running on stdio");
+console.error("Woody's Wild Guess MCP Server running on stdio");
