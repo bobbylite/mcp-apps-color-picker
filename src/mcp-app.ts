@@ -130,8 +130,8 @@ randomBtn.addEventListener("click", () => {
 
 selectBtn.addEventListener("click", async () => {
   // Send the selected color back to the conversation
-  await app.sendContext({
-    context: [
+  await app.updateModelContext({
+    content: [
       {
         type: "text",
         text: `Selected color: ${currentColor}`,
