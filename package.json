@@ -1,7 +1,7 @@
 {
-  "name": "mcp-color-picker",
+  "name": "woodys-wild-guess",
   "version": "1.0.0",
-  "description": "An MCP App that provides an interactive color picker",
+  "description": "An MCP App that provides Woody's Wild Guess - an interactive LIRR capital project estimator",
   "type": "module",
   "scripts": {
     "build": "INPUT=mcp-app.html vite build",
