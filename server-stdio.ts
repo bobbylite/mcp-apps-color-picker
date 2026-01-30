@@ -30,28 +30,15 @@ registerAppTool(
     title: "Woody's Wild Guess - LIRR Estimator",
     description:
       "Opens Woody's Wild Guess, an interactive LIRR capital project estimator. Browse real MTA capital program projects, get cost estimates, and learn about Long Island Rail Road infrastructure investments. Optionally provide a project name or category to search.",
-    inputSchema: {
-      type: "object",
-      properties: {
-        query: {
-          type: "string",
-          description:
-            "Optional search query to filter projects (e.g., 'Grand Central', 'electrification', 'accessibility')",
-        },
-      },
-      additionalProperties: false,
-    } as const,
+    inputSchema: {}, // Empty schema - no input parameters
     _meta: { ui: { resourceUri } },
   },
-  async (args: Record<string, unknown>) => {
-    const query = (args.query as string) || "";
+  async () => {
     return {
       content: [
         {
           type: "text",
-          text: query
-            ? `Woody's Wild Guess initialized. Searching for: ${query}`
-            : "Woody's Wild Guess initialized. Browse LIRR capital projects and get Woody's estimates!",
+          text: "Woody's Wild Guess initialized. Browse LIRR capital projects and get Woody's estimates!",
         },
       ],
     };
